@@ -1,0 +1,26 @@
+runtime: python39
+entrypoint: serve index.html
+
+handlers:
+  - url: /
+    static_files: index.html
+    upload: index.html
+
+  - url: /(.*\.html)
+    static_files: \1
+    upload: .*\.(html)
+
+  - url: /(.*\.js)
+    static_files: \1
+    upload: .*\.(js)
+
+  - url: /(.*\.css)
+    static_files: \1
+    upload: .*\.(css)
+
+  - url: /(.*\.(png|jpg|gif|ico))
+    static_files: \1
+    upload: .*\.(png|jpg|gif|ico)
+
+  - url: /.*
+    static_dir: .
